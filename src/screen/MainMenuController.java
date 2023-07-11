@@ -15,7 +15,7 @@ import javafx.stage.WindowEvent;
 import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
 
-import display.stackdisplay.StackDisplayController;
+//import display.stackdisplay.StackDisplayController;
 
 public class MainMenuController {
 
