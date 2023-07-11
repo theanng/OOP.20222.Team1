@@ -1,6 +1,6 @@
-package structure.Stack;
+package datastructures.stack;
 
-import structure.List.List;
+import datastructures.list.List;
 
 public class Stack extends List{
     public Stack(int size) {

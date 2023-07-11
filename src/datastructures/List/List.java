@@ -1,4 +1,4 @@
-package structure.List;
+package datastructures.list;
 
 import java.util.Arrays;
 import java.util.NoSuchElementException;
@@ -107,5 +107,21 @@ public class List {
                 }
             }
         }
+    }
+
+    public void insertAtIndex(int index, int value) {
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        if (size == elements.length) {
+            System.out.println("full");
+        }
+
+        // Di chuyển các phần tử từ vị trí index sang phải để tạo chỗ trống cho phần tử mới
+        System.arraycopy(elements, index, elements, index + 1, size - index);
+
+        elements[index] = value;
+        size++;
     }
 }

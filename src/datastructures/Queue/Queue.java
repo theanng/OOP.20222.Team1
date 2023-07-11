@@ -1,6 +1,6 @@
-package structure.Queue;
+package datastructures.queue;
 
-import structure.List.List;
+import datastructures.list.List;
 
 public class Queue extends List{
 
