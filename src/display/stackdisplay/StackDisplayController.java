@@ -19,13 +19,14 @@ import javafx.scene.text.Text;
 import java.util.Optional;
 
 public class StackDisplayController extends GeneralDisplayController {
+    public TextArea noteTextArea;
     private Circle[] circles;
     private int[] createdArray;
     private Stack stack;
     @FXML
     private Button backButton;
     @FXML
-    private Button peekButton;
+    private ToggleButton peekButton;
     @FXML
     private ToggleButton pushButton;
     @FXML
@@ -137,6 +138,14 @@ public class StackDisplayController extends GeneralDisplayController {
         int peekIndex = stack.size() - 1;
         Circle peekCircle = circles[peekIndex];
         peekCircle.setFill(Color.web("#d8b5ff"));
+        if (peekButton.isSelected()) {
+            noteTextArea.setVisible(true);
+            noteTextArea.setText("Peek operation:\n" +
+                    "1. View the top element without removing it.\n" +
+                    "2. Retrieve the value of the element at the top of the stack.");
+        } else {
+            noteTextArea.setVisible(false);
+        }
     }
     @FXML
     public void handlePushButtonAction() {
