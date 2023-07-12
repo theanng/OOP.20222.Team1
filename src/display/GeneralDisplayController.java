@@ -69,4 +69,7 @@ public class GeneralDisplayController {
     public void handleCreateArrayButtonAction() {
         arrayOptionsBox.setVisible(createArrayButton.isSelected());
     }
+    public boolean isValidNumber(int number) {
+        return number >= 1 && number <= 99;
+    }
 }
