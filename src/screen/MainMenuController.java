@@ -3,6 +3,7 @@ package screen;
 import java.util.Optional;
 import java.io.IOException;
 
+import display.stackdisplay.StackDisplayController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -37,6 +38,28 @@ public class MainMenuController {
     // Các phương thức xử lý sự kiện cho các nút
     @FXML
     private void handleStackButtonAction(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/display/stackdisplay/StackDisplay.fxml"));
+        Parent stackDisplay = loader.load();
+        Scene scene = new Scene(stackDisplay);
+
+        // Tạo một Stage mới cho StackView
+        Stage stackStage = new Stage();
+        stackStage.setScene(scene);
+
+        // Đặt vị trí và kích thước của cửa sổ
+        stackStage.centerOnScreen();
+        stackStage.setX((stackStage.getX() + stackStage.getWidth()) / 2 - stackStage.getWidth() / 2);
+        stackStage.setY((stackStage.getY() + stackStage.getHeight()) / 2 - stackStage.getHeight() / 2);
+
+        // Gán tiêu đề cho Stage của StackView
+        stackStage.setTitle("Stack Display");
+
+        // Truyền thông tin về Stage của MainMenu vào StackViewController
+        StackDisplayController stackDisplayController = loader.getController();
+        stackDisplayController.setMainMenuStage(stackStage);
+
+        // Hiển thị cửa sổ StackView
+        stackStage.show();
     }
 
     @FXML
