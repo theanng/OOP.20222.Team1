@@ -2,27 +2,21 @@ package display;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.VPos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class GeneralDisplayController {
+
     @FXML
     public TextField inputTextField;
     @FXML
@@ -39,20 +33,23 @@ public class GeneralDisplayController {
     public Button userListButton;
     @FXML
     public Button randomButton;
-
     @FXML
     public AnchorPane canvas;
+    @FXML
+    public Slider speedSlider;
     public Stage mainMenuStage;
     public Circle[] circles;
     public Text[] texts;
     public Line[] arrowLines;
     public Polygon[] arrowHeads;
+    public double fadeDuration;
+    private int previousNumber = -1;
     public void setMainMenuStage(Stage stage) {
         this.mainMenuStage = stage;
     }
-
     @FXML
     public void handleBackButtonAction() throws IOException {
+
         Stage currentStage = (Stage) backButton.getScene().getWindow();
         currentStage.close();
 
@@ -70,6 +67,10 @@ public class GeneralDisplayController {
         arrayOptionsBox.setVisible(createArrayButton.isSelected());
     }
     public boolean isValidNumber(int number) {
-        return number >= 1 && number <= 99;
+        boolean isValid = number >= 1 && number <= 99 && number != previousNumber;
+        if (isValid) {
+            previousNumber = number;
+        }
+        return isValid;
     }
 }

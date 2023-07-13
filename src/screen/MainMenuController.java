@@ -4,6 +4,7 @@ import java.util.Optional;
 import java.io.IOException;
 
 import display.stackdisplay.StackDisplayController;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -15,8 +16,6 @@ import javafx.application.Platform;
 import javafx.stage.WindowEvent;
 import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
-
-//import display.stackdisplay.StackDisplayController;
 
 public class MainMenuController {
 
@@ -61,16 +60,12 @@ public class MainMenuController {
         // Hiển thị cửa sổ StackView
         stackStage.show();
     }
-
     @FXML
     private void handleQueueButtonAction(ActionEvent event) throws IOException {
     }
-
-
     @FXML
     private void handleListButtonAction(ActionEvent event) throws IOException {
     }
-
     @FXML
     private void handleHelpButtonAction(ActionEvent event) {
         // Xử lý sự kiện khi nút "Help" được nhấn
@@ -89,7 +84,6 @@ public class MainMenuController {
         alert.setContentText(message);
         alert.showAndWait();
     }
-
     @FXML
     private void handleExitButtonAction(ActionEvent event) {
 
@@ -105,13 +99,11 @@ public class MainMenuController {
             }
         });
     }
-
     private void handleWindowCloseRequest(WindowEvent event) {
         event.consume(); // Ngăn không đóng cửa sổ tự động
 
         confirmExit();
     }
-
     private void confirmExit() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirm Exit");

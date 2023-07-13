@@ -4,6 +4,7 @@ import array.RandomArrayGenerator;
 import datastructures.stack.Stack;
 import display.GeneralDisplayController;
 
+import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.geometry.VPos;
 import javafx.scene.control.*;
@@ -15,14 +16,11 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 import java.util.Optional;
 
 public class StackDisplayController extends GeneralDisplayController {
-    public TextArea noteTextArea;
-    private Circle[] circles;
-    private int[] createdArray;
-    private Stack stack;
     @FXML
     private Button backButton;
     @FXML
@@ -38,7 +36,9 @@ public class StackDisplayController extends GeneralDisplayController {
     @FXML
     private ToggleButton goButton;
     @FXML
-    private AnchorPane canvas;
+    public TextArea noteTextArea;
+    private int[] createdArray;
+    private Stack stack;
     private RandomArrayGenerator randomArrayGenerator;
     public StackDisplayController() {
         randomArrayGenerator = new RandomArrayGenerator();
@@ -127,6 +127,7 @@ public class StackDisplayController extends GeneralDisplayController {
         stack.print();
         drawArray(stack.toArray());
     }
+    @FXML
     public void handleUserListButtonAction() {
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("User Defined List");
@@ -151,7 +152,7 @@ public class StackDisplayController extends GeneralDisplayController {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error");
                     alert.setHeaderText("Invalid Input");
-                    alert.setContentText("Please enter numbers from 1 to 99, separated by commas ','.");
+                    alert.setContentText("Please enter numbers from 1 to 99, separated by commas ',', and different array elements.");
                     alert.showAndWait();
                     return; // Kết thúc phương thức nếu có lỗi nhập số không hợp lệ
                 }
@@ -167,6 +168,7 @@ public class StackDisplayController extends GeneralDisplayController {
             drawArray(stack.toArray());
         }
     }
+    @FXML
     public void handleRandomButtonAction() {
         String selectedOption = choiceBox.getValue();
         int size = Integer.parseInt(selectedOption);
@@ -189,13 +191,19 @@ public class StackDisplayController extends GeneralDisplayController {
             alert.setHeaderText(null);
             alert.setContentText("Stack is empty. Cannot peek element.");
             alert.showAndWait();
-            /**System.out.println("Stack is empty. Cannot peek.");**/
             return;
-
         }
         // Change color
         int peekIndex = stack.size() - 1;
         Circle peekCircle = circles[peekIndex];
+        fadeDuration = speedSlider.getValue();
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(fadeDuration), circles[peekIndex]);
+        fadeTransition.setFromValue(0.5);
+        fadeTransition.setToValue(1.0);
+        fadeTransition.play();
+        fadeTransition.setOnFinished(event -> {
+            circles[peekIndex].setFill(Color.SKYBLUE);
+        });
         peekCircle.setFill(Color.web("#d8b5ff"));
         noteTextArea.setText("Peek operation:\n" +
                     "Provide a way to examine the top element\n" +
@@ -205,11 +213,9 @@ public class StackDisplayController extends GeneralDisplayController {
     @FXML
     public void handlePushButtonAction() {
         pushBox.setVisible(true);
-
         // create a random number
         int[] randomArray = RandomArrayGenerator.generateRandomArray(1);
         int value = randomArray[0];
-
         // Gán giá trị số ngẫu nhiên vào TextField
         inputTextField.setText(String.valueOf(value));
     }
@@ -224,18 +230,31 @@ public class StackDisplayController extends GeneralDisplayController {
             alert.setHeaderText("Cannot Push");
             alert.setContentText("The stack is full. Cannot push more elements.");
             alert.showAndWait();
+        } else if (stack.contains(value)) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Cannot Push");
+            alert.setContentText("The value " + value + " already exists in the stack.");
+            alert.showAndWait();
         } else {
             stack.push(value);
             drawArray(stack.toArray());
             pushBox.setVisible(false);
             stack.print();
-            //Change color
+            // Change color
             int pushedIndex = stack.size() - 1;
-            circles[pushedIndex].setFill(Color.SKYBLUE);
+            fadeDuration = speedSlider.getValue();
+            FadeTransition fadeTransition = new FadeTransition(Duration.seconds(fadeDuration), circles[pushedIndex]);
+            fadeTransition.setFromValue(0.0);
+            fadeTransition.setToValue(1.0);
+            fadeTransition.play();
+            fadeTransition.setOnFinished(event -> {
+                circles[pushedIndex].setFill(Color.SKYBLUE);
+            });
             noteTextArea.setText("Push operation:\n" +
                     "Allow you to expand the stack by adding \n" +
-                    "an element to the top. \n"+
-                    "Example in this case, "+ stack.peek() +" is added to the top." );
+                    "an element to the top. \n" +
+                    "Example in this case, " + stack.peek() + " is added to the top.");
         }
     }
     @FXML
@@ -248,12 +267,24 @@ public class StackDisplayController extends GeneralDisplayController {
             alert.showAndWait();
             return;
         }
+        int poppedElement = stack.peek();
+        int poppedIndex = stack.size() - 1;
+
+        fadeDuration = speedSlider.getValue();
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(fadeDuration), circles[poppedIndex]);
+        fadeTransition.setFromValue(1.0);
+        fadeTransition.setToValue(0.0);
+        fadeTransition.play();
+        fadeTransition.setOnFinished(event -> {
+            // Sau khi hiệu ứng hoàn thành, pop phần tử khỏi stack và cập nhật hiển thị mảng
+            stack.pop();
+            int[] currentArray = stack.toArray();
+            drawArray(currentArray);
+        });
         noteTextArea.setText("Pop operation:\n" +
                 "Allow you to shrink the stack by discarding\n" +
-                "the top element.\n"+
-                "Example in this case, "+ stack.peek() +" has just been removed." );
-        stack.pop();
-        int[] currentArray = stack.toArray();
-        drawArray(currentArray);
+                "the top element.\n" +
+                "Example in this case, " + poppedElement + " has just been removed.");
     }
+
 }
