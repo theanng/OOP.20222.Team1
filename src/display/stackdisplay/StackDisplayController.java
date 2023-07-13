@@ -243,12 +243,11 @@ public class StackDisplayController extends GeneralDisplayController {
             stack.print();
             // Change color
             int pushedIndex = stack.size() - 1;
-            fadeDuration = speedSlider.getValue();
-            FadeTransition fadeTransition = new FadeTransition(Duration.seconds(fadeDuration), circles[pushedIndex]);
-            fadeTransition.setFromValue(0.0);
-            fadeTransition.setToValue(1.0);
-            fadeTransition.play();
-            fadeTransition.setOnFinished(event -> {
+            fadeTransitionCircle = new FadeTransition(Duration.seconds(fadeDuration), circles[pushedIndex]);
+            fadeTransitionCircle.setFromValue(0.0);
+            fadeTransitionCircle.setToValue(1.0);
+            fadeTransitionCircle.play();
+            fadeTransitionCircle.setOnFinished(event -> {
                 circles[pushedIndex].setFill(Color.SKYBLUE);
             });
             noteTextArea.setText("Push operation:\n" +
@@ -270,12 +269,11 @@ public class StackDisplayController extends GeneralDisplayController {
         int poppedElement = stack.peek();
         int poppedIndex = stack.size() - 1;
 
-        fadeDuration = speedSlider.getValue();
-        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(fadeDuration), circles[poppedIndex]);
-        fadeTransition.setFromValue(1.0);
-        fadeTransition.setToValue(0.0);
-        fadeTransition.play();
-        fadeTransition.setOnFinished(event -> {
+        fadeTransitionCircle = new FadeTransition(Duration.seconds(fadeDuration), circles[poppedIndex]);
+        fadeTransitionCircle.setFromValue(1.0);
+        fadeTransitionCircle.setToValue(0.0);
+        fadeTransitionCircle.play();
+        fadeTransitionCircle.setOnFinished(event -> {
             // Sau khi hiệu ứng hoàn thành, pop phần tử khỏi stack và cập nhật hiển thị mảng
             stack.pop();
             int[] currentArray = stack.toArray();
