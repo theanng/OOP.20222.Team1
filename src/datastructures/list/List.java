@@ -117,10 +117,8 @@ public class List {
         if (size == elements.length) {
             System.out.println("full");
         }
-
         // Di chuyển các phần tử từ vị trí index sang phải để tạo chỗ trống cho phần tử mới
         System.arraycopy(elements, index, elements, index + 1, size - index);
-
         elements[index] = value;
         size++;
     }

@@ -3,6 +3,8 @@ package screen;
 import java.util.Optional;
 import java.io.IOException;
 
+import display.listdisplay.ListDisplayController;
+import display.queuedisplay.QueueDisplayController;
 import display.stackdisplay.StackDisplayController;
 
 import javafx.event.ActionEvent;
@@ -62,9 +64,43 @@ public class MainMenuController {
     }
     @FXML
     private void handleQueueButtonAction(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/display/queuedisplay/QueueDisplay.fxml"));
+        Parent queueDisplay = loader.load();
+        Scene scene = new Scene(queueDisplay);
+
+        Stage queueStage = new Stage();
+        queueStage.setScene(scene);
+
+        queueStage.centerOnScreen();
+        queueStage.setX((queueStage.getX() + queueStage.getWidth()) / 2 - queueStage.getWidth() / 2);
+        queueStage.setY((queueStage.getY() + queueStage.getHeight()) / 2 - queueStage.getHeight() / 2);
+
+        queueStage.setTitle("Queue Display");
+
+        QueueDisplayController queueDisplayController = loader.getController();
+        queueDisplayController.setMainMenuStage(queueStage);
+
+        queueStage.show();
     }
     @FXML
     private void handleListButtonAction(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/display/listdisplay/ListDisplay.fxml"));
+        Parent listDisplay = loader.load();
+        Scene scene = new Scene(listDisplay);
+
+        Stage listStage = new Stage();
+        listStage.setScene(scene);
+
+        listStage.centerOnScreen();
+        listStage.setX((listStage.getX() + listStage.getWidth()) / 2 - listStage.getWidth() / 2);
+        listStage.setY((listStage.getY() + listStage.getHeight()) / 2 - listStage.getHeight() / 2);
+
+        listStage.setTitle("List Display");
+
+        ListDisplayController listDisplayController = loader.getController();
+        listDisplayController.setMainMenuStage(listStage);
+
+        listStage.show();
     }
     @FXML
     private void handleHelpButtonAction(ActionEvent event) {
@@ -86,7 +122,6 @@ public class MainMenuController {
     }
     @FXML
     private void handleExitButtonAction(ActionEvent event) {
-
         confirmExit();
     }
     @FXML
@@ -101,7 +136,6 @@ public class MainMenuController {
     }
     private void handleWindowCloseRequest(WindowEvent event) {
         event.consume(); // Ngăn không đóng cửa sổ tự động
-
         confirmExit();
     }
     private void confirmExit() {
@@ -114,7 +148,6 @@ public class MainMenuController {
         ButtonType noButton = new ButtonType("No");
 
         alert.getButtonTypes().setAll(yesButton, noButton);
-
         Optional<ButtonType> result = alert.showAndWait();
 
         if (result.isPresent() && result.get() == yesButton) {
