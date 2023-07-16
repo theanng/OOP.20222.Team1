@@ -32,10 +32,6 @@ public class ListDisplayController extends GeneralDisplayController {
     @FXML
     private Button removeGoButton;
     @FXML
-    private Button gofindButton;
-    @FXML
-    private Button GoButton;
-    @FXML
     private Button insertGoButton;
     @FXML
     private HBox removeBox;
@@ -187,6 +183,7 @@ public class ListDisplayController extends GeneralDisplayController {
             }
         });
         sequentialTransition.play();
+        searchBox.setVisible(false);
     }
     @FXML
     public void handleInsertButtonAction() {
@@ -284,6 +281,7 @@ public class ListDisplayController extends GeneralDisplayController {
                 alert.showAndWait();
             }
         }
+        insertBox.setVisible(false);
     }
     @FXML
     public void handleRemoveButtonAction() {
@@ -373,6 +371,7 @@ public class ListDisplayController extends GeneralDisplayController {
                 }
             }
         }
+        removeBox.setVisible(false);
     }
     private boolean isSortingPaused = false;
     private Task<Void> sortingTask;

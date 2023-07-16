@@ -29,30 +29,15 @@ import java.util.Arrays;
 import java.util.Optional;
 
 public class QueueDisplayController extends GeneralDisplayController {
-    private int[] createdArray;
-    private Queue queue;
-    public TextArea noteTextArea;
-    private RandomArrayGenerator randomArrayGenerator;
-
-    @FXML
-    private ToggleButton peekButton;
     @FXML
     private HBox peekBox;
-    @FXML
-    private Button frontButton;
-    @FXML
-    private Button back1Button;
     @FXML
     private HBox enqueueBox;
     @FXML
     private TextField inputTextField;
-    @FXML
-    private Button goButton;
-    @FXML
-    private Button dequeueButton;
-    @FXML
-    private AnchorPane canvas;
-
+    private int[] createdArray;
+    private Queue queue;
+    private RandomArrayGenerator randomArrayGenerator;
     public QueueDisplayController() {
         randomArrayGenerator = new RandomArrayGenerator();
         queue = new Queue(12);
@@ -121,39 +106,42 @@ public class QueueDisplayController extends GeneralDisplayController {
 
         int frontIndex = 0;
         Circle frontCircle = circles[frontIndex];
-        frontCircle.setFill(Color.ORANGE);
+        fadeDuration = speedSlider.getValue();
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(fadeDuration), frontCircle );
+        fadeTransition.setFromValue(0.5);
+        fadeTransition.setToValue(1.0);
+        fadeTransition.play();
+        fadeTransition.setOnFinished(event -> {
+            frontCircle.setFill(Color.ORANGE);
+        });
         noteTextArea.setText("Peek operation:\n" +
         "Provide a way to examine the front element\n" +
         "without modifying the queue.\n"+
         "Example in this case, "+queue.peek()+" is the element at \nthe front." );
+        peekBox.setVisible(false);
     }
     public void handleBack1ButtonAction() {
-        if (queue.isEmpty()) {
-            System.out.println("Hàng đợi trống.");
-            return;
-        }
         int[] currentArray = queue.toArray();
         drawArray(currentArray);
 
         int backIndex = queue.size() - 1; // Vị trí back
         Circle backCircle = circles[backIndex];
-        backCircle.setFill(Color.ORANGE);
+        fadeDuration = speedSlider.getValue();
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(fadeDuration), backCircle );
+        fadeTransition.setFromValue(0.5);
+        fadeTransition.setToValue(1.0);
+        fadeTransition.play();
+        fadeTransition.setOnFinished(event -> {
+            backCircle.setFill(Color.ORANGE);
+        });
         noteTextArea.setText("Peek operation:\n" +
                     "Provide a way to examine the back element\n" +
                     "without modifying the queue.\n"+
                     "Example in this case, "+queue.peekBack()+" is the element at \nthe back." );
+        peekBox.setVisible(false);
+
     }
     public void handleEnqueueButtonAction() {
-        enqueueBox.setVisible(true);
-        int[] randomArray = RandomArrayGenerator.generateRandomArray(1);
-        int value = randomArray[0];
-        inputTextField.setText(String.valueOf(value));
-    }
-    @FXML
-    public void handleGoButtonAction() {
-        String valueString = inputTextField.getText();
-        int value = Integer.parseInt(valueString);
-
         if (queue.isFull()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -161,66 +149,64 @@ public class QueueDisplayController extends GeneralDisplayController {
             alert.setContentText("The queue is full. Cannot enqueue more elements.");
             alert.showAndWait();
         } else {
-            queue.enqueue(value);
-            drawArray(queue.toArray());
-            enqueueBox.setVisible(false);
-            queue.print();
-            // Đặt màu fill của hình tròn vừa được enqueue thành màu xanh da trời
-            int enqueuedIndex = queue.size() - 1;
-            Circle addCircle = circles[enqueuedIndex];
-            FadeTransition fadeTransition = new FadeTransition(Duration.seconds(1.0), addCircle );
-            fadeTransition.setFromValue(0.0);
-            fadeTransition.setToValue(1.0);
-            fadeTransition.play();
-            fadeTransition.setOnFinished(event -> {
-                addCircle.setFill(Color.SKYBLUE);
-            });
+            enqueueBox.setVisible(true);
+            int[] randomArray = RandomArrayGenerator.generateRandomArray(1);
+            int value = randomArray[0];
+            inputTextField.setText(String.valueOf(value));
         }
+    }
+    @FXML
+    public void handleGoButtonAction() {
+        String valueString = inputTextField.getText();
+        int value = Integer.parseInt(valueString);
+        queue.enqueue(value);
+        drawArray(queue.toArray());
+        queue.print();
+        // Đặt màu fill của hình tròn vừa được enqueue thành màu xanh da trời
+        int enqueuedIndex = queue.size() - 1;
+        Circle addCircle = circles[enqueuedIndex];
+        fadeDuration = speedSlider.getValue();
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(fadeDuration), addCircle );
+        fadeTransition.setFromValue(0.0);
+        fadeTransition.setToValue(1.0);
+        fadeTransition.play();
+        fadeTransition.setOnFinished(event -> {
+            addCircle.setFill(Color.SKYBLUE);
+        });
         noteTextArea.setText("Enqueue operation:\n" +
         "Allow you to expand the queue by adding \n" +
         "an element to the back. \n" +
         "Example in this case, " + queue.peekBack() + " is added to the back.");
+        enqueueBox.setVisible(false);
     }
     @FXML
     public void handleDequeueButtonAction() {
         if (queue.isEmpty()) {
-            System.out.println("Hàng đợi trống. Không thể xóa phần tử.");
-            return;
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Queue is empty");
+            alert.setHeaderText(null);
+            alert.setContentText("Queue is empty. Cannot dequeue element.");
+            alert.showAndWait();
+        } else {
+            int removedItem = queue.dequeue();
+            int index = 0;
+            circles[index].setFill(Color.PINK);
+            fadeDuration = speedSlider.getValue();
+            FadeTransition fadeTransition = new FadeTransition(Duration.seconds(fadeDuration), circles[index]);
+            fadeTransition.setFromValue(1.0);
+            fadeTransition.setToValue(0.0);
+            fadeTransition.play();
+            fadeTransition.setOnFinished(event -> {
+                // Kiểm tra trạng thái của circles[index] trước khi tiếp tục
+                if (canvas.getChildren().contains(circles[index])) {
+                    drawArray(queue.toArray());
+                }
+            });
+            noteTextArea.setText("Dequeue operation:\n" +
+                    "Allow you to shrink the queue by removing \n" +
+                    "an element from the front. \n" +
+                    "Example in this case, " + removedItem + " is removed from\nthe front.");
         }
-
-        int removedItem = queue.dequeue();
-        System.out.println("Phần tử đã xóa: " + removedItem);
-        System.out.println("Hàng đợi sau khi xóa:");
-        queue.print();
-
-        // Lấy các node cần xóa
-        Circle removedCircle = circles[0];
-        Text removedText = texts[0];
-        Line removedArrowLine = arrowLines[0];
-        Polygon removedArrowHead = arrowHeads[0];
-
-        // Tạo transition để thay đổi độ mờ từ 1.0 (đầy đủ) thành 0.0 (mờ hoàn toàn)
-        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(1.0), removedCircle);
-        fadeTransition.setFromValue(1.0);
-        fadeTransition.setToValue(0.0);
-        fadeTransition.play();
-
-        // Khi transition kết thúc, loại bỏ node khỏi canvas và cập nhật mảng
-        fadeTransition.setOnFinished(event -> {
-            canvas.getChildren().remove(removedCircle);
-            canvas.getChildren().remove(removedText);
-            canvas.getChildren().remove(removedArrowLine);
-            canvas.getChildren().remove(removedArrowHead);
-
-            // Cập nhật mảng circles, texts, arrowLines và arrowHeads
-            circles = Arrays.copyOfRange(circles, 1, circles.length);
-            texts = Arrays.copyOfRange(texts, 1, texts.length);
-            arrowLines = Arrays.copyOfRange(arrowLines, 1, arrowLines.length);
-            arrowHeads = Arrays.copyOfRange(arrowHeads, 1, arrowHeads.length);
-        });
-        noteTextArea.setText("Dequeue operation:\n" +
-        "Allow you to shrink the queue by removing \n" +
-        "an element from the front. \n" +
-        "Example in this case, " + removedItem + " is removed from\nthe front.");
     }
+
 }

@@ -20,23 +20,9 @@ import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
 
 public class MainMenuController {
-
-    @FXML
-    private Button stackButton;
-
-    @FXML
-    private Button queueButton;
-
-    @FXML
-    private Button listButton;
-
-    @FXML
-    private Button helpButton;
-
     @FXML
     private Button exitButton;
 
-    // Các phương thức xử lý sự kiện cho các nút
     @FXML
     private void handleStackButtonAction(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/display/stackdisplay/StackDisplay.fxml"));
@@ -104,16 +90,14 @@ public class MainMenuController {
     }
     @FXML
     private void handleHelpButtonAction(ActionEvent event) {
-        // Xử lý sự kiện khi nút "Help" được nhấn
         String message = "Welcome to the Data Structures Application!\n\n"
                 + "This application demonstrates basic operations on different data structures, including Stack, Queue, and List.\n\n"
                 + "To get started, select the desired data structure from the menu:\n"
                 + "- Stack: Simulates a stack data structure and allows you to perform operations like push and pop.\n"
                 + "- Queue: Simulates a queue data structure and allows you to perform operations like enqueue and dequeue.\n"
-                + "- List: Simulates a list data structure and allows you to perform operations like add, remove, and search.\n\n"
+                + "- List: Simulates a list data structure and allows you to perform operations like add, remove,search and sort.\n\n"
                 + "Enjoy exploring and learning about data structures!\n";
 
-        // Hiển thị thông báo
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Help");
         alert.setHeaderText(null);
