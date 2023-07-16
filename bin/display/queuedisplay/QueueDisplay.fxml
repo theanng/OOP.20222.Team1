@@ -15,18 +15,25 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <AnchorPane prefHeight="800.0" prefWidth="1450.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="display.queuedisplay.QueueDisplayController">
     <children>
-        <VBox layoutX="44.0" layoutY="617.0" prefHeight="142.0" prefWidth="1227.0" spacing="10.0" AnchorPane.bottomAnchor="41.0" AnchorPane.leftAnchor="44.0" AnchorPane.rightAnchor="179.0" AnchorPane.topAnchor="617.0">
+        <ImageView fitHeight="800" fitWidth="1450.0">
+            <image>
+                <Image url="display/nen.gif" />
+            </image>
+        </ImageView>
+        <VBox layoutX="51.0" layoutY="607.0" prefHeight="142.0" prefWidth="916.0" spacing="5.0" AnchorPane.bottomAnchor="51.0" AnchorPane.leftAnchor="51.0" AnchorPane.rightAnchor="124.0" AnchorPane.topAnchor="607.0">
             <children>
                 <HBox prefHeight="0.0" prefWidth="1226.0" spacing="10.0">
                     <children>
-                        <ToggleButton fx:id="createArrayButton" mnemonicParsing="false" onAction="#handleCreateArrayButtonAction" prefHeight="26.0" prefWidth="121.0" text="Create Array" />
-                        <HBox fx:id="arrayOptionsBox" alignment="CENTER_LEFT" focusTraversable="true" prefHeight="26.0" prefWidth="1130.0" spacing="10.0" visible="false">
+                        <ToggleButton fx:id="createArrayButton" mnemonicParsing="false" onAction="#handleCreateArrayButtonAction" prefHeight="26.0" prefWidth="100.0" text="Create Array" style="-fx-background-color: #2b4b82;" textFill="#f0abc1" />
+                        <HBox fx:id="arrayOptionsBox" alignment="CENTER_LEFT" focusTraversable="true" prefHeight="26.0" prefWidth="1130.0" spacing="5.0" visible="false">
                             <children>
-                                <Button fx:id="emptyButton" mnemonicParsing="false" onAction="#handleEmptyButtonAction" text="Empty" VBox.vgrow="ALWAYS" />
-                                <Button fx:id="userListButton" mnemonicParsing="false" onAction="#handleUserListButtonAction" text="User-defined list" VBox.vgrow="ALWAYS" />
-                                <ChoiceBox fx:id="choiceBox" prefHeight="26.0" prefWidth="67.0">
+                                <Button fx:id="emptyButton" mnemonicParsing="false" onAction="#handleEmptyButtonAction" text="Empty" style="-fx-background-color: #2b4b82;" textFill="#f0abc1" VBox.vgrow="ALWAYS" />
+                                <Button fx:id="userListButton" mnemonicParsing="false" onAction="#handleUserListButtonAction" text="User-defined list" style="-fx-background-color: #2b4b82;" textFill="#f0abc1" VBox.vgrow="ALWAYS" />
+                                <ChoiceBox fx:id="choiceBox" prefHeight="26.0" prefWidth="67.0" style="-fx-background-color: white;" >
                                     <items>
                                         <FXCollections fx:factory="observableArrayList">
                                             <String fx:value="1" />
@@ -40,43 +47,42 @@
                                             <String fx:value="10" />
                                             <String fx:value="11" />
                                             <String fx:value="12" />
-
                                         </FXCollections>
                                     </items>
                                 </ChoiceBox>
-                                <Button fx:id="randomButton" mnemonicParsing="false" onAction="#handleRandomButtonAction" text="Random" VBox.vgrow="ALWAYS" />
+                                <Button fx:id="randomButton" mnemonicParsing="false" onAction="#handleRandomButtonAction" text="Random" style="-fx-background-color: #2b4b82;" textFill="#f0abc1" VBox.vgrow="ALWAYS" />
                             </children>
                         </HBox>
                     </children>
                 </HBox>
-                <HBox prefHeight="0.0" prefWidth="1227.0" spacing="10.0">
+                <HBox prefHeight="0.0" prefWidth="1227.0" spacing="5.0">
                     <children>
-                        <ToggleButton fx:id="peekButton" mnemonicParsing="false" onAction="#handlePeekButtonAction" prefHeight="26.0" prefWidth="100.0" text="Peek" />
+                        <ToggleButton fx:id="peekButton" mnemonicParsing="false" onAction="#handlePeekButtonAction" prefHeight="26.0" prefWidth="100.0" text="Peek" style="-fx-background-color: #2b4b82;" textFill="#f0abc1" />
                         <HBox fx:id="peekBox" alignment="CENTER_LEFT" focusTraversable="true" prefHeight="100.0" prefWidth="200.0" spacing="10.0" visible="false">
                             <children>
-                                <Button fx:id="frontButton" mnemonicParsing="false" onAction="#handleFrontButtonAction" text="Front" />
-                                <Button fx:id="back1Button" mnemonicParsing="false" onAction="#handleBack1ButtonAction" text="Back" />
+                                <Button fx:id="frontButton" mnemonicParsing="false" onAction="#handleFrontButtonAction" text="Front" style="-fx-background-color: #2b4b82;" textFill="#f0abc1" />
+                                <Button fx:id="back1Button" mnemonicParsing="false" onAction="#handleBack1ButtonAction" text="Back" style="-fx-background-color: #2b4b82;" textFill="#f0abc1" />
                             </children>
                         </HBox>
                     </children>
                 </HBox>
                 <HBox prefHeight="0.0" prefWidth="1226.0" spacing="10.0">
                     <children>
-                        <ToggleButton fx:id="enqueueButton" mnemonicParsing="false" onAction="#handleEnqueueButtonAction" prefHeight="26.0" prefWidth="100.0" text="Enqueue" />
+                        <ToggleButton fx:id="enqueueButton" mnemonicParsing="false" onAction="#handleEnqueueButtonAction" prefHeight="26.0" prefWidth="100.0" text="Enqueue" style="-fx-background-color: #2b4b82;" textFill="#f0abc1" />
                         <HBox fx:id="enqueueBox" alignment="CENTER_LEFT" focusTraversable="true" prefHeight="29.0" prefWidth="510.0" spacing="10.0" visible="false">
                             <children>
                                 <TextField fx:id="inputTextField" prefHeight="26.0" prefWidth="94.0" />
-                                <Button fx:id="goButton" mnemonicParsing="false" onAction="#handleGoButtonAction" text="Go" />
+                                <Button fx:id="goButton" mnemonicParsing="false" onAction="#handleGoButtonAction" text="Go"  style="-fx-background-color: #2b4b82;" textFill="#f0abc1" />
                             </children>
                         </HBox>
                     </children>
                 </HBox>
-                <Button fx:id="dequeueButton" mnemonicParsing="false" onAction="#handleDequeueButtonAction" prefHeight="26.0" prefWidth="100.0" text="Dequeue" />
+                <Button fx:id="dequeueButton" mnemonicParsing="false" onAction="#handleDequeueButtonAction" prefHeight="26.0" prefWidth="100.0" text="Dequeue"  style="-fx-background-color: #2b4b82;" textFill="#f0abc1" />
             </children>
         </VBox>
-        <Button fx:id="backButton" layoutX="1324.0" layoutY="47.0" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="41.0" prefWidth="86.0" style="-fx-background-color: white;" text="BACK" AnchorPane.bottomAnchor="730.0" AnchorPane.leftAnchor="1320.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="30.0" />
+        <Button fx:id="backButton" layoutX="1294.0" layoutY="46.0" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="41.0" prefWidth="86.0" style="-fx-background-color: #2b4b82;" text="BACK" textFill="#f0abc1" AnchorPane.bottomAnchor="714.0" AnchorPane.leftAnchor="1294.0" AnchorPane.rightAnchor="66.0" AnchorPane.topAnchor="46.0" />
         <AnchorPane fx:id="canvas" layoutX="313.0" layoutY="74.0" prefHeight="524.0" prefWidth="839.0" />
-        <TextArea fx:id="noteTextArea" layoutX="974.0" layoutY="573.0" prefHeight="120.0" prefWidth="415.0">
+        <TextArea fx:id="noteTextArea" layoutX="974.0" layoutY="573.0" prefHeight="120.0" prefWidth="415.0" style="-fx-background-color: white;">
             <font>
                 <Font name="Courier New Bold" size="14.0" />
             </font>
@@ -84,7 +90,7 @@
                 <Insets bottom="5" left="5" right="5" top="5" />
             </padding>
         </TextArea>
-        <Label layoutX="1069.0" layoutY="695.0" prefHeight="26.0" prefWidth="53.0" text="Speed(s)" />
+        <Label layoutX="1069.0" layoutY="695.0" prefHeight="26.0" prefWidth="53.0" text="Speed(s)" textFill="#2b4b82" />
         <Slider fx:id="speedSlider" layoutX="1129.0" layoutY="699.0" majorTickUnit="0.5" max="2" min="0.5" minorTickCount="1" nodeOrientation="RIGHT_TO_LEFT" showTickLabels="true" showTickMarks="true" value="0.5" />    
     </children>
 </AnchorPane>
