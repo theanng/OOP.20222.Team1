@@ -10,28 +10,19 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.image.Image?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1450.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="display.stackdisplay.StackDisplayController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1450.0" style="-fx-background-image: url('display/nen.gif');  -fx-background-size: cover;     -fx-background-position: center;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="display.stackdisplay.StackDisplayController">
     <children>
-        <ImageView fx:id="backgroundImage" fitHeight="800" fitWidth="1450.0">
-            <image>
-                <Image url="display/nen.gif" />
-            </image>
-        </ImageView>
+
         <VBox layoutX="51.0" layoutY="607.0" prefHeight="142.0" prefWidth="916.0" spacing="5.0" AnchorPane.bottomAnchor="51.0" AnchorPane.leftAnchor="51.0" AnchorPane.rightAnchor="124.0" AnchorPane.topAnchor="607.0">
             <children>
                 <HBox prefHeight="0.0" prefWidth="1226.0" spacing="10.0">
                     <children>
-                        <ToggleButton fx:id="createArrayButton" mnemonicParsing="false" onAction="#handleCreateArrayButtonAction" prefHeight="26.0" prefWidth="100.0" style="-fx-background-color: #2b4b82;" text="Create Array" textFill="#f0abc1">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font></ToggleButton>
+                        <ToggleButton fx:id="createArrayButton" mnemonicParsing="false" onAction="#handleCreateArrayButtonAction" prefHeight="26.0" prefWidth="100.0" style="-fx-background-color: #2b4b82;" text="Create Array" textFill="#f0abc1" />
                         <HBox fx:id="arrayOptionsBox" alignment="CENTER_LEFT" focusTraversable="true" prefHeight="26.0" prefWidth="1130.0" spacing="10.0" visible="false">
                             <children>
                                 <Button fx:id="emptyButton" mnemonicParsing="false" onAction="#handleEmptyButtonAction" style="-fx-background-color: #2b4b82;" text="Empty" textFill="#f0abc1" VBox.vgrow="ALWAYS" />
@@ -72,7 +63,7 @@
                         </HBox>
                     </children>
                 </HBox>
-                <Button fx:id="popButton" mnemonicParsing="false" onAction="#handlePopButtonAction" prefHeight="26.0" prefWidth="100.0" style="-fx-background-color: #2b4b82;" textFill="#f0abc1" text="Pop"  />
+                <Button fx:id="popButton" mnemonicParsing="false" onAction="#handlePopButtonAction" prefHeight="26.0" prefWidth="100.0" style="-fx-background-color: #2b4b82;" text="Pop" textFill="#f0abc1" />
             </children>
         </VBox>
         <Button fx:id="backButton" layoutX="1294.0" layoutY="46.0" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="41.0" prefWidth="86.0" style="-fx-background-color: #2b4b82;" text="BACK" textFill="#f0abc1" AnchorPane.bottomAnchor="714.0" AnchorPane.leftAnchor="1294.0" AnchorPane.rightAnchor="66.0" AnchorPane.topAnchor="46.0" />

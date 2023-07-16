@@ -1,24 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.image.Image?>
-<AnchorPane maxHeight="190.0" maxWidth="346.0" minHeight="190.0" minWidth="346.0" prefHeight="190.0" prefWidth="346.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="screen.MainMenuController">
+<AnchorPane maxHeight="190.0" maxWidth="346.0" minHeight="190.0" minWidth="346.0" prefHeight="190.0" prefWidth="346.0" style="-fx-background-image: url('screen/nen.gif');  -fx-background-size: cover;     -fx-background-position: center;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="screen.MainMenuController">
     <children>
-        <ImageView fitHeight="190" fitWidth="346.0" >
-            <image>
-                <Image url="screen/nen.gif" />
-            </image>
-        </ImageView>
         <VBox alignment="CENTER" layoutX="5.0" layoutY="6.0" prefHeight="178.0" prefWidth="337.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <Button fx:id="stackButton" mnemonicParsing="false" onAction="#handleStackButtonAction" prefHeight="26.0" prefWidth="336.0" style="-fx-background-color: #f0abc1;" text="Stack" textFill="#2b4b82" VBox.vgrow="ALWAYS">
-            <font>
-               <Font name="System Bold" size="13.0" />
-            </font></Button>
+            <Button fx:id="stackButton" mnemonicParsing="false" onAction="#handleStackButtonAction" prefHeight="26.0" prefWidth="336.0" style="-fx-background-color: #f0abc1;" text="Stack" textFill="#2b4b82" VBox.vgrow="ALWAYS" />
             <Button fx:id="queueButton" mnemonicParsing="false" onAction="#handleQueueButtonAction" prefHeight="26.0" prefWidth="336.0" style="-fx-background-color: #f0abc1;" text="Queue" textFill="#2b4b82" VBox.vgrow="ALWAYS">
             <font>
                <Font name="System Bold" size="13.0" />
