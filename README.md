@@ -1,18 +1,54 @@
-## Getting Started
+## OOP.DASI.20222.Team1
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+MEMBERS
 
-## Folder Structure
+- Nguyễn Thế An:  
 
-The workspace contains two folders by default, where:
+    +List.java  
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+    +Queue.java 
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+    +Diagram: 15% 
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+    +StackDisplayController: 15% 
 
-## Dependency Management
+    +QueueDisplayController.java: 60% 
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+    +ListDisplayController:10% 
+
+    +Report :80% 
+
+- Hồ Ngọc Ánh 
+
+    +Stack.java 
+
+    +Diagram 10% 
+
+    +MainmenuScreen 
+
+    +GeneralDisplayController 
+
+    +StackDisplayController:70% 
+
+    +QueueDisplayController:25%	 
+
+    +ListDisplayController :75% 
+
+    +Report:20% 
+
+Lê Tuấn Anh 
+
+    +Diagram 75% 
+
+    +ListDisplayController :15% 
+
+    +Slide 50% 
+
+Mai Hoàng Anh 
+
+    +StackDisplayController : 15% 
+
+    +QueueDisplayController:15% 
+
+    +Slide 50% 
+
