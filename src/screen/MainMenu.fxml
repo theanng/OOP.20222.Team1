@@ -11,7 +11,7 @@
     <children>
         <ImageView fitHeight="190" fitWidth="346.0" >
             <image>
-                <Image url="screen/nen.gif" />
+                <Image url="screen/nen.gif" /> 
             </image>
         </ImageView>
         <VBox alignment="CENTER" layoutX="5.0" layoutY="6.0" prefHeight="178.0" prefWidth="337.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
