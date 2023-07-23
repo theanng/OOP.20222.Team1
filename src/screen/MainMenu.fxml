@@ -11,11 +11,11 @@
             <Button fx:id="stackButton" mnemonicParsing="false" onAction="#handleStackButtonAction" prefHeight="26.0" prefWidth="336.0" style="-fx-background-color: #f0abc1;" text="Stack" textFill="#2b4b82" VBox.vgrow="ALWAYS" />
             <Button fx:id="queueButton" mnemonicParsing="false" onAction="#handleQueueButtonAction" prefHeight="26.0" prefWidth="336.0" style="-fx-background-color: #f0abc1;" text="Queue" textFill="#2b4b82" VBox.vgrow="ALWAYS">
             <font>
-               <Font name="System Bold" size="13.0" />
+               <Font size="13.0" />
             </font></Button>
             <Button fx:id="listButton" mnemonicParsing="false" onAction="#handleListButtonAction" prefHeight="26.0" prefWidth="336.0" style="-fx-background-color: #f0abc1;" text="List" textFill="#2b4b82" VBox.vgrow="ALWAYS">
             <font>
-               <Font name="System Bold" size="13.0" />
+               <Font size="13.0" />
             </font></Button>
             <Button fx:id="helpButton" mnemonicParsing="false" onAction="#handleHelpButtonAction" prefHeight="26.0" prefWidth="336.0" style="-fx-background-color: #f0abc1;" text="Help" textFill="#2b4b82" VBox.vgrow="ALWAYS" />
             <Button fx:id="exitButton" mnemonicParsing="false" onAction="#handleExitButtonAction" prefHeight="26.0" prefWidth="336.0" style="-fx-background-color: #f0abc1;" text="Exit" textFill="#2b4b82" VBox.vgrow="ALWAYS" />

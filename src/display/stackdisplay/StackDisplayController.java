@@ -22,19 +22,9 @@ import java.util.Optional;
 
 public class StackDisplayController extends GeneralDisplayController {
     @FXML
-    private Button backButton;
-    @FXML
-    private ToggleButton peekButton;
-    @FXML
-    private ToggleButton pushButton;
-    @FXML
-    private Button popButton;
-    @FXML
     private HBox pushBox;
     @FXML
     private TextField inputTextField;
-    @FXML
-    private ToggleButton goButton;
     @FXML
     public TextArea noteTextArea;
     private int[] createdArray;
@@ -44,8 +34,8 @@ public class StackDisplayController extends GeneralDisplayController {
         randomArrayGenerator = new RandomArrayGenerator();
         stack = new Stack(9); // size of Stack
     }
+    @Override
     public void drawArray(int[] array) {
-
         double canvasWidth = canvas.getWidth();
         double canvasHeight = canvas.getHeight();
 

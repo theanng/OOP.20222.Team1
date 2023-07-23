@@ -221,7 +221,7 @@ public class ListDisplayController extends GeneralDisplayController {
             noteTextArea.setText("In this example, we insert the number " + value +" at \nthe first position: i = 0");
 
             if (isValidNumber(value)) {
-                list.insertAtIndex(0, value);
+                list.add(0, value);
                 drawArray(list.toArray());
 
                 Circle insertedCircle = circles[0];
@@ -240,7 +240,7 @@ public class ListDisplayController extends GeneralDisplayController {
             noteTextArea.setText("In this example, we insert the number " + value +" at \nthe last position: i = N");
 
             if (isValidNumber(value)) {
-                list.insertAtIndex(list.size(), value);
+                list.add(list.size(), value);
                 drawArray(list.toArray());
 
                 Circle insertedCircle = circles[list.size() - 1];
@@ -260,7 +260,7 @@ public class ListDisplayController extends GeneralDisplayController {
 
             if (index >= 1 && index <= list.size() - 1) {
                 if (isValidNumber(value)) {
-                    list.insertAtIndex(index, value);
+                    list.add(index, value);
                     drawArray(list.toArray());
 
                     Circle insertedCircle = circles[index];
@@ -419,9 +419,9 @@ public class ListDisplayController extends GeneralDisplayController {
 
                             if (nextElement < currentElement) {
                                 list.remove(j);
-                                list.insertAtIndex(j, nextElement);
+                                list.add(j, nextElement);
                                 list.remove(j + 1);
-                                list.insertAtIndex(j + 1, currentElement);
+                                list.add(j + 1, currentElement);
                                 swapped = true; // Đánh dấu đã đổi chỗ
 
                                 // Cập nhật hiển thị mảng sau khi đổi vị trí

@@ -15,8 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane style="-fx-background-image: url('display/nen.gif');  -fx-background-size: cover;
-    -fx-background-position: center;" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1450.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="display.listdisplay.ListDisplayController">
+<AnchorPane style="-fx-background-image: url('display/nen.gif');  -fx-background-size: 100%;" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1450.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="display.listdisplay.ListDisplayController">
     <children>
         <VBox layoutX="51.0" layoutY="576.0" prefHeight="142.0" prefWidth="916.0" spacing="5.0" AnchorPane.bottomAnchor="82.0" AnchorPane.leftAnchor="51.0" AnchorPane.rightAnchor="124.0" AnchorPane.topAnchor="576.0">
             <children>
